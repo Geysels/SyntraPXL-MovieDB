@@ -1,3 +1,22 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.card-img-overlay{
+    background-color: rgba(0,0,0,0.50);
+}
+
+.card-img-overlay:hover{
+    cursor: pointer;
+}
+.card{
+    border: none;
+}
+
+.card-img {
+    height: 35vh;
+    object-fit: cover;
+}
+.page-item:hover{
+    cursor: pointer;
+}
