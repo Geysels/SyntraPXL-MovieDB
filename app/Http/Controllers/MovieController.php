@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Models\Favorites;
 
 class MovieController extends Controller
 {
@@ -13,7 +14,9 @@ class MovieController extends Controller
 
     public function show(Request $request,$id){
         $movie = json_decode(Http::get('https://www.omdbapi.com/?i='.$id.'&apikey='.env('API_KEY')));
-        return view('movies.show',['movie' => $movie]);
+        $favorite = Favorites::where('user_id','=',auth()->user()->id)->where('movie_id','=',$id)->first();
+        $favorite = isset($favorite)?$favorite = true: $favorite = false;
+        return view('movies.show',['movie' => $movie,'favorite'=>$favorite]);
     }
 
     public function random(){
@@ -33,4 +36,5 @@ class MovieController extends Controller
         }
         return view('movies.index',['movies' => $movies->Search,'results'=> $movies->totalResults,'currentpage'=>$pagenumber,'maxpages'=>$max,'oldTitle'=> $request->title]);
     }
+
 }

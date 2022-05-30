@@ -8,6 +8,7 @@
                     <input type="title" class="form-control mb-3 rounded" name="title" id="title" placeholder="empty">
                     <label for="title"> Type here the name of the movie</label>
                     <button class="btn btn-outline-dark btn-lg">Find movies</button>
+                    <button class="btn btn-outline-success btn-lg" onclick='event.preventDefault();window.location.href = "/movie/create"'>Add movie</button>
                  </form>
                  @if(isset($movies))
                     <div class="row p-0 m-0 py-2">

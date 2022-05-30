@@ -44,9 +44,12 @@
 
                         <x-slot name="content">
                             <!-- Authentication -->
+                            <x-dropdown-link :href="route('favorites')">
+                                    {{ __('My movies') }}
+                                </x-dropdown-link>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-
+                                <hr>
                                 <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                         this.closest('form').submit();">
                                     {{ __('Log Out') }}
